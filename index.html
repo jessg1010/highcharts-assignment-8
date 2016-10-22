@@ -1,1 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Crime Rates in the United States</title>
+
+        <link rel="stylesheet" href="styles/stylesheet.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"> </script>
+
+        <script src="js/highcharts.js"></script>
+
+        <script src="js/themes/sand-signika.js"></script>
+
+        <script src="js/modules/exporting.js"></script>
+
+
+</head>
+<h1> Crime Rates in the United States </h1>
+
+<body>
+  <p> The following two graphs illustrate the violent crime rates in the
+    United States from 2012 to 2014. The graphs note that there has been an
+    overall decrease in violent crimes.
+    and more. </p>
+
+<div id="container" style="width:100%; height:400px;"></div>
+
+  <script>
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Crime Rates in the United States from 2012-2015',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: <a href="https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-1"> FBI Uniformed Crime Report</a>',
+            x: -20
+        },
+        xAxis: {
+        	title: {
+          		text: 'Year'
+          },
+            categories: [ '2012', '2013', '2014', '2015']
+        },
+        yAxis: {
+            title: {
+                text: 'Crime volume/rate per 100,000 people',
+            },
+
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Total violent crime rate',
+            data: [ 387.8, 369.1, 361.6, 372.6 ]
+        }, {
+            name: 'Aggravated Assault',
+            data: [ 242.8, 229.6, 229.2, 237.8 ]
+        }, {
+            name: 'Robbery rate',
+            data: [ 113.1, 109.0, 101.3, 101.9 ]
+        }, {
+            name: 'Motor vehicle theft',
+            data: [ 230.4, 221.3, 215.4, 220.2 ]
+        }]
+    });
+});
+</script>
+
+<p> The second graph compares the total crime rates within regions in the United States.
+  The Midwestern Region covers:  Illinois, Indiana, Michigan, Ohio, Wisconsin,
+  Iowa, Kansas, Minnesota, Missouri, Nebraska, North Dakota and South Dakota.
+  The Northeasten Region covers: Connecticut, Maine, Massachusetts, New Hampshire,
+  Rhode Island, Vermont, New Jersey, New York and Pennsylvania. The Southern Region covers:
+  Delaware, the District of Columbia, Florida, Georgia, Maryland, North Carolina,
+   South Carolina, Virginia, West Virginia, Alabama, Kentucky, Mississippi, Tennessee,
+   Arkansas, Louisiana, Oklahoma and Texas. The Western Region covers: Arizona, Colorado,
+   Idaho, Montana, Nevada, New Mexico, Utah, Wyoming, Alaska, California, Hawaii,
+   Oregon, Washington and Puerto Rico.
+
+
+
+<div id="bar" style="width:100%; height:400px;"></div>
+
+<script>
+$(function () {
+    $('#bar').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Crime Rate per Geographic Region '
+        },
+        subtitle: {
+            text: 'Source: <a href="https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-4"> FBI UCR 2014-2015</a><a href="https://ucr.fbi.gov/crime-in-the-u.s/2013/crime-in-the-u.s.-2013/tables/4tabledatadecoverviewpdf/table_4_crime_in_the_united_states_by_region_geographic_division_and_state_2012-2013.xls"> and FBI UCR 2012-2013</a>'
+        },
+        xAxis: {
+            categories: [
+                'Midwest',
+                'Northeast',
+                'South',
+                'West',
+
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Total Crime volume/rate per 100,000 people'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '2012',
+            data: [355.7, 351.2, 424.0, 387.1]
+
+        }, {
+            name: '2013',
+            data: [333.4, 335.1, 403.5, 367.4]
+
+        }, {
+            name: '2014',
+            data: [ 343.0, 324.3 , 410.3, 372.6 ]
+
+        },{
+            name: '2015',
+            data: [ 356.3, 320.6 , 418.3, 397.4,]
+
+        }]
+    });
+});
+
+</script>
+
+</body>
+
+</html>
